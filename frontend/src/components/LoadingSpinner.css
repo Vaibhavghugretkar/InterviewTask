@@ -1,0 +1,227 @@
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Bouncing dots spinner */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.spinner > div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.loading-spinner.small .spinner > div {
+  width: 8px;
+  height: 8px;
+}
+
+.loading-spinner.large .spinner > div {
+  width: 16px;
+  height: 16px;
+}
+
+.loading-spinner.primary .spinner > div {
+  background-color: #667eea;
+}
+
+.loading-spinner.secondary .spinner > div {
+  background-color: #764ba2;
+}
+
+.loading-spinner.success .spinner > div {
+  background-color: #10b981;
+}
+
+.spinner .bounce1 {
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  animation-delay: -0.16s;
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    transform: scale(0);
+  } 40% { 
+    transform: scale(1.0);
+  }
+}
+
+/* Ring spinner */
+.spinner-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.loading-spinner.small .spinner-ring {
+  width: 40px;
+  height: 40px;
+}
+
+.loading-spinner.large .spinner-ring {
+  width: 80px;
+  height: 80px;
+}
+
+.spinner-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border-radius: 50%;
+  animation: spinner-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.loading-spinner.small .spinner-ring div {
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  border-width: 4px;
+}
+
+.loading-spinner.large .spinner-ring div {
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-width: 8px;
+}
+
+.loading-spinner.primary .spinner-ring div {
+  border-top-color: #667eea;
+}
+
+.loading-spinner.secondary .spinner-ring div {
+  border-top-color: #764ba2;
+}
+
+.loading-spinner.success .spinner-ring div {
+  border-top-color: #10b981;
+}
+
+.spinner-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.spinner-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.spinner-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes spinner-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulsing effect */
+.loading-spinner::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+  animation: pulse 2s infinite;
+}
+
+.loading-spinner.small::before {
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+}
+
+.loading-spinner.large::before {
+  width: 120px;
+  height: 120px;
+  margin: -60px 0 0 -60px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .spinner-ring {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .spinner-ring div {
+    width: 38px;
+    height: 38px;
+    margin: 5px;
+    border-width: 4px;
+  }
+  
+  .loading-spinner::before {
+    width: 80px;
+    height: 80px;
+    margin: -40px 0 0 -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spinner-ring {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .spinner-ring div {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-width: 3px;
+  }
+  
+  .spinner > div {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .loading-spinner::before {
+    width: 60px;
+    height: 60px;
+    margin: -30px 0 0 -30px;
+  }
+}
